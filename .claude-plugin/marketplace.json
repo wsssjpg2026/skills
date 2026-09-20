@@ -1,0 +1,19 @@
+{
+  "name": "wsssjpg2026-skills",
+  "plugins": [
+    {
+      "name": "engineering",
+      "description": "Engineering workflow skills, such as automated code review.",
+      "source": "./skills/engineering",
+      "skills": ["./code-review-from-claude"],
+      "strict": false
+    },
+    {
+      "name": "setup",
+      "description": "Machine and environment setup skills, such as dual-NIC traffic splitting and Wi-Fi driver setup.",
+      "source": "./skills/setup",
+      "skills": ["./aic8800dc-wifi-remmina", "./dual-nic-proxy-split"],
+      "strict": false
+    }
+  ]
+}
