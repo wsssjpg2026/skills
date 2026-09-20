@@ -20,7 +20,7 @@ By default it reads the repo's guideline files — **CLAUDE.md and AGENTS.md** �
    - **Agent #4**: Check previous PRs and their comments for applicable feedback
    - **Agent #5**: Verify compliance with guidance in code comments
 5. Scores each issue 0-100 for confidence level
-6. Filters out issues below the 80 confidence threshold
+6. Filters out issues below the 50 confidence threshold
 7. Posts a review comment with high-confidence issues only
 
 ## Usage
@@ -29,7 +29,7 @@ Invoke the skill in your agent (or via `/code-review-from-claude` where slash-co
 
 - Launches 5 review agents in parallel
 - Scores each issue for confidence
-- Posts a comment with issues ≥80 confidence
+- Posts a comment with issues ≥50 confidence
 - Skips posting if no high-confidence issues are found
 
 **Review comment format:**
@@ -72,7 +72,7 @@ https://github.com/owner/repo/blob/abc123.../src/utils.ts#L23-L28
 ## Best practices
 
 - Maintain clear CLAUDE.md / AGENTS.md files for better compliance checking
-- Trust the 80+ confidence threshold — false positives are filtered
+- Trust the 50+ confidence threshold — false positives are filtered
 - Run on all non-trivial pull requests
 - Review agent findings as a starting point for human review
 - Update guideline files based on recurring review patterns
@@ -81,13 +81,13 @@ https://github.com/owner/repo/blob/abc123.../src/utils.ts#L23-L28
 
 ### Adjusting confidence threshold
 
-The default threshold is 80. To adjust, edit SKILL.md:
+The threshold is currently set to 50. To adjust, edit SKILL.md:
 
 ```markdown
-Filter out any issues with a score less than 80.
+Filter out any issues with a score less than 50.
 ```
 
-Change `80` to your preferred threshold (0-100).
+Change `50` to your preferred threshold (0-100).
 
 ### Customizing review focus
 
@@ -108,7 +108,7 @@ Edit SKILL.md to add or modify agent tasks, e.g.:
 
 - **Review takes too long**: normal for large PRs — agents run in parallel; consider splitting large PRs.
 - **Too many false positives**: make guideline files more specific about what matters.
-- **No review comment posted**: check whether the PR is closed/draft/trivial/already reviewed, or no issues scored ≥80.
+- **No review comment posted**: check whether the PR is closed/draft/trivial/already reviewed, or no issues scored ≥50.
 - **Link formatting broken**: links must use the exact form `https://github.com/owner/repo/blob/[full-sha]/path/file.ext#L[start]-L[end]` with at least 1 line of context.
 - **`gh` not working**: install and authenticate it (`gh auth login`), and verify the repository has a GitHub remote.
 
