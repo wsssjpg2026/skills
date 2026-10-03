@@ -1,6 +1,7 @@
 ---
 name: code-review-from-claude
 description: Automated multi-agent code review of a GitHub pull request — five parallel review agents, confidence scoring to filter false positives, and compliance checks against the repo's guideline files (CLAUDE.md and AGENTS.md). Use whenever the user asks to review, audit, or check a PR / pull request — even if they don't explicitly say "code review".
+disable-model-invocation: true
 ---
 
 Provide a code review for the given pull request. This workflow is tool-agnostic: it works in any coding agent that can spawn subagents and run shell commands, and does not depend on any specific vendor, model, or plugin format.
